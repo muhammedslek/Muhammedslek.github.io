@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamad Slek – UAV Engineer & Aviation Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --surface: #f7f7f5;
+    --border: #e8e8e6;
+    --border-strong: #d0d0cc;
+    --text-primary: #1a1a18;
+    --text-secondary: #6b6b67;
+    --text-muted: #a0a09c;
+    --accent: #2563eb;
+    --accent-bg: #eff6ff;
+    --accent-text: #1d4ed8;
+    --radius: 8px;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Layout ── */
+  .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    z-index: 100;
+    padding: 1rem 0;
+  }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  .nav-name { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.15s; }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .hero-name {
+    font-size: 44px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 560px;
+    margin-bottom: 2rem;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+  .tag {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 99px;
+    background: var(--surface);
+    border: 0.5px solid var(--border-strong);
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    background: var(--text-primary);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-secondary {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--text-primary);
+    border: 0.5px solid var(--border-strong);
+    cursor: pointer;
+    transition: background 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-secondary:hover { background: var(--surface); }
+
+  /* ── Section ── */
+  .section { padding: 3.5rem 0; border-bottom: 0.5px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 1.75rem;
+  }
+
+  /* ── Projects ── */
+  .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .project-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: border-color 0.15s;
+  }
+  .project-card:hover { border-color: var(--border-strong); }
+  .project-icon { font-size: 24px; margin-bottom: 0.75rem; }
+  .project-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .project-org { font-size: 12px; color: var(--text-muted); margin-bottom: 0.6rem; }
+  .project-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+  .project-badge {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent-text);
+    background: var(--accent-bg);
+    padding: 3px 8px;
+    border-radius: var(--radius);
+  }
+
+  /* ── Experience ── */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1rem 1.5rem;
+    padding: 1.25rem 0;
+    border-top: 0.5px solid var(--border);
+  }
+  .exp-item:last-child { border-bottom: 0.5px solid var(--border); }
+  .exp-date { font-size: 12px; color: var(--text-muted); padding-top: 3px; }
+  .exp-role { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+  .exp-company { font-size: 13px; color: var(--text-secondary); margin-bottom: 0.6rem; }
+  .exp-bullets { list-style: none; padding: 0; }
+  .exp-bullets li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 2px;
+  }
+  .exp-bullets li::before { content: "–"; position: absolute; left: 0; color: var(--text-muted); }
+
+  /* ── Skills ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+  .skill-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+  }
+  .skill-name { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .skill-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ── Languages ── */
+  .lang-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
+  .lang-pill {
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 99px;
+    background: var(--surface);
+    border: 0.5px solid var(--border-strong);
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  .lang-level { font-size: 11px; color: var(--text-muted); font-weight: 400; margin-left: 4px; }
+
+  /* ── Contact ── */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.9rem 1.1rem;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .contact-card:hover { border-color: var(--border-strong); color: var(--text-primary); }
+  .contact-icon { font-size: 18px; flex-shrink: 0; }
+
+  /* ── Footer ── */
+  footer {
+    padding: 2.5rem 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 600px) {
+    .hero-name { font-size: 32px; }
+    .nav-links { gap: 1rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+    .exp-date { padding-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-name">Mohamad Slek</span>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">UAV Systems · Mechatronics · Aviation Ground Ops</p>
+    <h1 class="hero-name">Building things<br>that fly.</h1>
+    <p class="hero-sub">Multilingual technology specialist with 6+ years of hands-on experience in UAV engineering, autonomous systems, hardware and team leadership. Based in Naaldwijk, Netherlands — open to aviation ground crew, drone operations and technical roles.</p>
+    <div class="tags">
+      <span class="tag">Autonomous UAVs</span>
+      <span class="tag">3D CAD · Fusion 360</span>
+      <span class="tag">RC Pilot</span>
+      <span class="tag">Hardware repair</span>
+      <span class="tag">TEKNOFEST 4× competitor</span>
+      <span class="tag">Aviation ground ops</span>
+      <span class="tag">EN · TR · AR · NL</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn-primary" href="mailto:muhammedslek@yahoo.com">Get in touch</a>
+      <a class="btn-secondary" href="#projects">See my work</a>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="section" id="projects">
+  <div class="container">
+    <p class="section-label">Projects</p>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="project-icon">🛩️</div>
+        <p class="project-title">Turan Aviation – Autonomous UAVs</p>
+        <p class="project-org">TEKNOFEST Competition · 2022–2026</p>
+        <p class="project-desc">Founded and led a team for 4 consecutive years. Designed, manufactured and flight-tested autonomous quadcopters and fixed-wing UAVs using 3D-printed and hybrid material structures. Served as primary RC pilot and flight-test coordinator.</p>
+        <span class="project-badge">4× TEKNOFEST finalist</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🤖</div>
+        <p class="project-title">FRC Team #10465 – Competition Robot</p>
+        <p class="project-org">First Robotics Competition · 2023–2024</p>
+        <p class="project-desc">Designed competitive robots to global FRC specifications. Led mechanical production and reduced manufacturing costs by approximately $3,000 through structural design optimisation and material choices.</p>
+        <span class="project-badge">~$3,000 cost saving</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">💻</div>
+        <p class="project-title">School IT Lab Renewal</p>
+        <p class="project-org">Turan IT Development · 2023</p>
+        <p class="project-desc">Planned and executed a full IT lab renewal — hardware selection, setup and configuration of a cross-platform working environment for students and staff.</p>
+        <span class="project-badge">Infrastructure project</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🌐</div>
+        <p class="project-title">Application Management Platforms</p>
+        <p class="project-org">Home Workshop · 2023–2025</p>
+        <p class="project-desc">Built web platforms for organisations to receive and manage applications, with automated approval and rejection email workflows to reduce admin overhead.</p>
+        <span class="project-badge">Web development</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="section" id="experience">
+  <div class="container">
+    <p class="section-label">Experience</p>
+
+    <div class="exp-item">
+      <span class="exp-date">May – Jul 2026</span>
+      <div>
+        <p class="exp-role">Sales Associate & Inventory Controller</p>
+        <p class="exp-company">Bakkerij Cappadocia, Rotterdam</p>
+        <ul class="exp-bullets">
+          <li>Daily stock monitoring, supply organisation and inventory control</li>
+          <li>Direct customer interaction, developing conversational Dutch</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">May – Sep 2025</span>
+      <div>
+        <p class="exp-role">Technical Support Technician</p>
+        <p class="exp-company">Panorama PC Technical Solutions</p>
+        <ul class="exp-bullets">
+          <li>Diagnosed and repaired hardware and software issues for clients</li>
+          <li>Component replacement, system assembly and custom desktop builds</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">Feb – Sep 2024</span>
+      <div>
+        <p class="exp-role">Junior Graphic Designer</p>
+        <p class="exp-company">TOPS Limited</p>
+        <ul class="exp-bullets">
+          <li>Designed marketing materials and social media content</li>
+          <li>Tools: Adobe Photoshop, InDesign</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">2022 – 2026</span>
+      <div>
+        <p class="exp-role">Founder & Team Leader</p>
+        <p class="exp-company">Turan Aviation & IT Development</p>
+        <ul class="exp-bullets">
+          <li>Founded and led team across all 4 TEKNOFEST seasons</li>
+          <li>Primary RC pilot and flight-test coordinator for all UAV builds</li>
+          <li>Led school IT lab renewal project from planning to deployment</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Skills & Languages -->
+<section class="section" id="skills">
+  <div class="container">
+    <p class="section-label">Skills</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <p class="skill-name">UAV Engineering</p>
+        <p class="skill-sub">Quadcopter · Fixed-wing · Flight test</p>
+      </div>
+      <div class="skill-card">
+        <p class="skill-name">3D CAD</p>
+        <p class="skill-sub">Fusion 360 · Technical drawing</p>
+      </div>
+      <div class="skill-card">
+        <p class="skill-name">Hardware Repair</p>
+        <p class="skill-sub">PC assembly · Diagnostics</p>
+      </div>
+      <div class="skill-card">
+        <p class="skill-name">RC Pilot</p>
+        <p class="skill-sub">Flight ops · Ground coordination</p>
+      </div>
+      <div class="skill-card">
+        <p class="skill-name">Aviation Ground Ops</p>
+        <p class="skill-sub">Launch assist · Safety awareness</p>
+      </div>
+      <div class="skill-card">
+        <p class="skill-name">Web Development</p>
+        <p class="skill-sub">Platforms · Email automation</p>
+      </div>
+      <div class="skill-card">
+        <p class="skill-name">Graphic Design</p>
+        <p class="skill-sub">Photoshop · InDesign</p>
+      </div>
+      <div class="skill-card">
+        <p class="skill-name">Team Leadership</p>
+        <p class="skill-sub">4-year project management</p>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top: 2rem;">Languages</p>
+    <div class="lang-row">
+      <span class="lang-pill">Turkish <span class="lang-level">Native</span></span>
+      <span class="lang-pill">Arabic <span class="lang-level">Native</span></span>
+      <span class="lang-pill">English <span class="lang-level">Fluent</span></span>
+      <span class="lang-pill">Dutch <span class="lang-level">Conversational</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:muhammedslek@yahoo.com">
+        <span class="contact-icon">✉️</span>
+        <span>muhammedslek@yahoo.com</span>
+      </a>
+      <a class="contact-card" href="tel:+31687643298">
+        <span class="contact-icon">📞</span>
+        <span>+31 06 876 43298</span>
+      </a>
+      <span class="contact-card">
+        <span class="contact-icon">📍</span>
+        <span>Naaldwijk, Netherlands</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © 2026 Mohamad Slek
+  </div>
+</footer>
+
+</body>
+</html>
