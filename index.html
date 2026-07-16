@@ -3,265 +3,359 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MuhammedSlek – UAV Engineer & Aviation Specialist</title>
+<title>Mohamad Slek – UAV Engineer & Aviation Specialist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --bg: #ffffff;
-    --surface: #f7f7f5;
-    --border: #e8e8e6;
-    --border-strong: #d0d0cc;
-    --text-primary: #1a1a18;
-    --text-secondary: #6b6b67;
-    --text-muted: #a0a09c;
-    --accent: #2563eb;
-    --accent-bg: #eff6ff;
-    --accent-text: #1d4ed8;
-    --radius: 8px;
-  }
+:root {
+  --navy-900: #0a0f1e;
+  --navy-800: #0f172a;
+  --navy-700: #1e2d4a;
+  --navy-600: #1e3a5f;
+  --navy-500: #1d4ed8;
+  --navy-400: #3b82f6;
+  --navy-300: #93c5fd;
+  --navy-100: #dbeafe;
+  --accent:   #38bdf8;
+  --accent-dim: #0ea5e920;
+  --text-primary: #f0f4ff;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --border: rgba(148,163,184,0.12);
+  --border-strong: rgba(148,163,184,0.25);
+  --surface: rgba(30,45,74,0.5);
+  --surface-card: rgba(15,23,42,0.8);
+  --radius: 8px;
+}
 
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+html { scroll-behavior: smooth; }
 
-  a { color: inherit; text-decoration: none; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--navy-900);
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
 
-  /* ── Layout ── */
-  .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+/* subtle grid bg */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(56,189,248,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56,189,248,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
 
-  /* ── Nav ── */
-  nav {
-    position: sticky;
-    top: 0;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 0.5px solid var(--border);
-    z-index: 100;
-    padding: 1rem 0;
-  }
-  nav .container { display: flex; justify-content: space-between; align-items: center; }
-  .nav-name { font-size: 15px; font-weight: 600; color: var(--text-primary); }
-  .nav-links { display: flex; gap: 1.5rem; }
-  .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.15s; }
-  .nav-links a:hover { color: var(--text-primary); }
+.container { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
 
-  /* ── Hero ── */
-  .hero {
-    padding: 5rem 0 4rem;
-    border-bottom: 0.5px solid var(--border);
-  }
-  .hero-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent-text);
-    font-weight: 500;
-    margin-bottom: 1rem;
-  }
-  .hero-name {
-    font-size: 44px;
-    font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.1;
-    margin-bottom: 1.25rem;
-    letter-spacing: -0.02em;
-  }
-  .hero-sub {
-    font-size: 17px;
-    color: var(--text-secondary);
-    line-height: 1.75;
-    max-width: 560px;
-    margin-bottom: 2rem;
-  }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
-  .tag {
-    font-size: 12px;
-    padding: 4px 12px;
-    border-radius: 99px;
-    background: var(--surface);
-    border: 0.5px solid var(--border-strong);
-    color: var(--text-secondary);
-    font-weight: 500;
-  }
-  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn-primary {
-    font-size: 14px;
-    font-weight: 500;
-    padding: 10px 20px;
-    border-radius: var(--radius);
-    background: var(--text-primary);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: opacity 0.15s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .btn-primary:hover { opacity: 0.85; }
-  .btn-secondary {
-    font-size: 14px;
-    font-weight: 500;
-    padding: 10px 20px;
-    border-radius: var(--radius);
-    background: transparent;
-    color: var(--text-primary);
-    border: 0.5px solid var(--border-strong);
-    cursor: pointer;
-    transition: background 0.15s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .btn-secondary:hover { background: var(--surface); }
+/* ── Nav ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,15,30,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--border);
+  padding: 0;
+}
+.nav-inner {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 56px;
+}
+.nav-name {
+  font-size: 14px; font-weight: 600;
+  color: var(--accent);
+  display: flex; align-items: center;
+  letter-spacing: 0.02em;
+}
+.nav-tabs { display: flex; gap: 0; }
+.nav-tab {
+  font-size: 13px; font-weight: 500;
+  color: var(--text-secondary);
+  padding: 0 1.1rem;
+  display: flex; align-items: center;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  background: none; border-top: none; border-left: none; border-right: none;
+  text-decoration: none;
+}
+.nav-tab:hover { color: var(--text-primary); }
+.nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-  /* ── Section ── */
-  .section { padding: 3.5rem 0; border-bottom: 0.5px solid var(--border); }
-  .section:last-child { border-bottom: none; }
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    font-weight: 500;
-    margin-bottom: 1.75rem;
-  }
+/* ── Pages ── */
+.page { display: none; padding: 3.5rem 0 5rem; }
+.page.active { display: block; }
 
-  /* ── Projects ── */
-  .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
-  .project-card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
-    transition: border-color 0.15s;
-  }
-  .project-card:hover { border-color: var(--border-strong); }
-  .project-icon { font-size: 24px; margin-bottom: 0.75rem; }
-  .project-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
-  .project-org { font-size: 12px; color: var(--text-muted); margin-bottom: 0.6rem; }
-  .project-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
-  .project-badge {
-    display: inline-block;
-    margin-top: 0.75rem;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--accent-text);
-    background: var(--accent-bg);
-    padding: 3px 8px;
-    border-radius: var(--radius);
-  }
+/* ── Hero ── */
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500; margin-bottom: 1rem;
+}
+.hero-name {
+  font-size: 46px; font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.1; margin-bottom: 1.25rem;
+  letter-spacing: -0.025em;
+}
+.hero-name span { color: var(--accent); }
+.hero-sub {
+  font-size: 16px; color: var(--text-secondary);
+  line-height: 1.8; max-width: 560px; margin-bottom: 2rem;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.5rem; }
+.tag {
+  font-size: 12px; padding: 4px 12px; border-radius: 99px;
+  background: var(--accent-dim);
+  border: 0.5px solid rgba(56,189,248,0.25);
+  color: var(--navy-300); font-weight: 500;
+}
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 3.5rem; }
+.btn-primary {
+  font-size: 14px; font-weight: 500; padding: 10px 22px;
+  border-radius: var(--radius);
+  background: var(--accent); color: var(--navy-900);
+  border: none; cursor: pointer;
+  transition: opacity 0.15s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-secondary {
+  font-size: 14px; font-weight: 500; padding: 10px 22px;
+  border-radius: var(--radius); background: transparent;
+  color: var(--text-primary);
+  border: 0.5px solid var(--border-strong);
+  cursor: pointer; transition: background 0.15s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-secondary:hover { background: var(--surface); }
 
-  /* ── Experience ── */
-  .exp-item {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 1rem 1.5rem;
-    padding: 1.25rem 0;
-    border-top: 0.5px solid var(--border);
-  }
-  .exp-item:last-child { border-bottom: 0.5px solid var(--border); }
-  .exp-date { font-size: 12px; color: var(--text-muted); padding-top: 3px; }
-  .exp-role { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
-  .exp-company { font-size: 13px; color: var(--text-secondary); margin-bottom: 0.6rem; }
-  .exp-bullets { list-style: none; padding: 0; }
-  .exp-bullets li {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.65;
-    padding-left: 14px;
-    position: relative;
-    margin-bottom: 2px;
-  }
-  .exp-bullets li::before { content: "–"; position: absolute; left: 0; color: var(--text-muted); }
+/* stats row */
+.stats-row { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 2.5rem; border-top: 0.5px solid var(--border); }
+.stat-num { font-size: 28px; font-weight: 600; color: var(--accent); line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 12px; color: var(--text-muted); }
 
-  /* ── Skills ── */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
-  .skill-card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 0.75rem 1rem;
-  }
-  .skill-name { font-size: 14px; font-weight: 500; color: var(--text-primary); }
-  .skill-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+/* ── Section header ── */
+.section-label {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 500; margin-bottom: 1.75rem;
+}
 
-  /* ── Languages ── */
-  .lang-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
-  .lang-pill {
-    font-size: 13px;
-    padding: 6px 16px;
-    border-radius: 99px;
-    background: var(--surface);
-    border: 0.5px solid var(--border-strong);
-    color: var(--text-primary);
-    font-weight: 500;
-  }
-  .lang-level { font-size: 11px; color: var(--text-muted); font-weight: 400; margin-left: 4px; }
+/* divider */
+.divider { border: none; border-top: 0.5px solid var(--border); margin: 3rem 0; }
 
-  /* ── Contact ── */
-  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-  .contact-card {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0.9rem 1.1rem;
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    font-size: 13px;
-    color: var(--text-secondary);
-    transition: border-color 0.15s, color 0.15s;
-  }
-  .contact-card:hover { border-color: var(--border-strong); color: var(--text-primary); }
-  .contact-icon { font-size: 18px; flex-shrink: 0; }
+/* ── Project cards ── */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.project-card {
+  background: var(--surface-card);
+  border: 0.5px solid var(--border);
+  border-radius: 12px; padding: 1.35rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.project-card:hover { border-color: rgba(56,189,248,0.4); transform: translateY(-2px); }
+.project-icon { font-size: 26px; margin-bottom: 0.8rem; }
+.project-title { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 3px; }
+.project-org { font-size: 11px; color: var(--text-muted); margin-bottom: 0.65rem; }
+.project-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+.project-badge {
+  display: inline-block; margin-top: 0.8rem;
+  font-size: 11px; font-weight: 500;
+  color: var(--accent); background: var(--accent-dim);
+  padding: 3px 9px; border-radius: var(--radius);
+  border: 0.5px solid rgba(56,189,248,0.25);
+}
 
-  /* ── Footer ── */
-  footer {
-    padding: 2.5rem 0;
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-muted);
-  }
+/* ── Experience ── */
+.exp-item {
+  display: grid; grid-template-columns: 115px 1fr;
+  gap: 1rem 1.5rem; padding: 1.25rem 0;
+  border-top: 0.5px solid var(--border);
+}
+.exp-item:last-child { border-bottom: 0.5px solid var(--border); }
+.exp-date { font-size: 12px; color: var(--text-muted); padding-top: 3px; }
+.exp-role { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+.exp-company { font-size: 12px; color: var(--accent); margin-bottom: 0.55rem; }
+.exp-bullets { list-style: none; }
+.exp-bullets li {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.65;
+  padding-left: 14px; position: relative; margin-bottom: 2px;
+}
+.exp-bullets li::before { content: "–"; position: absolute; left: 0; color: var(--text-muted); }
 
-  /* ── Mobile ── */
-  @media (max-width: 600px) {
-    .hero-name { font-size: 32px; }
-    .nav-links { gap: 1rem; }
-    .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
-    .exp-date { padding-top: 0; }
-  }
+/* ── Skills ── */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 8px; }
+.skill-card {
+  background: var(--surface-card); border: 0.5px solid var(--border);
+  border-radius: var(--radius); padding: 0.8rem 1rem;
+  transition: border-color 0.2s;
+}
+.skill-card:hover { border-color: rgba(56,189,248,0.3); }
+.skill-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+.skill-sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+.lang-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
+.lang-pill {
+  font-size: 13px; padding: 6px 16px; border-radius: 99px;
+  background: var(--surface-card); border: 0.5px solid var(--border-strong);
+  color: var(--text-primary); font-weight: 500;
+}
+.lang-level { font-size: 11px; color: var(--text-muted); font-weight: 400; margin-left: 4px; }
+
+/* ── Contact ── */
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.contact-card {
+  display: flex; align-items: center; gap: 10px;
+  padding: 1rem 1.1rem;
+  background: var(--surface-card); border: 0.5px solid var(--border);
+  border-radius: 12px; font-size: 13px; color: var(--text-secondary);
+  transition: border-color 0.15s, color 0.15s; text-decoration: none;
+}
+.contact-card:hover { border-color: rgba(56,189,248,0.4); color: var(--text-primary); }
+.contact-icon { font-size: 18px; flex-shrink: 0; }
+
+/* ── PHOTOS PAGE ── */
+.media-intro { font-size: 14px; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.7; }
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+.photo-slot {
+  aspect-ratio: 4/3;
+  background: var(--surface-card);
+  border: 1px dashed var(--border-strong);
+  border-radius: 12px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative; overflow: hidden;
+}
+.photo-slot:hover { border-color: rgba(56,189,248,0.5); background: var(--accent-dim); }
+.photo-slot img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; border-radius: 12px;
+}
+.photo-slot .slot-label {
+  font-size: 12px; color: var(--text-muted); text-align: center; padding: 0 1rem;
+}
+.photo-slot .slot-icon { font-size: 28px; }
+.photo-slot input[type=file] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.photo-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(10,15,30,0.9));
+  padding: 0.75rem 0.75rem 0.5rem;
+  font-size: 11px; color: var(--navy-300);
+  border-radius: 0 0 12px 12px;
+}
+
+/* lightbox */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(10,15,30,0.95);
+  align-items: center; justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 8px; }
+.lightbox-close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: none; border: none; color: var(--text-secondary);
+  font-size: 28px; cursor: pointer; line-height: 1;
+}
+.lightbox-close:hover { color: var(--text-primary); }
+
+/* ── VIDEOS PAGE ── */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.video-slot {
+  background: var(--surface-card); border: 1px dashed var(--border-strong);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color 0.2s;
+}
+.video-slot:hover { border-color: rgba(56,189,248,0.4); }
+.video-embed { width: 100%; aspect-ratio: 16/9; border: none; border-radius: 12px 12px 0 0; display: block; background: var(--navy-800); }
+.video-info { padding: 0.75rem 1rem; }
+.video-title { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+.video-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+.url-input-row { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.url-input {
+  flex: 1; min-width: 200px;
+  background: var(--surface-card); border: 0.5px solid var(--border-strong);
+  border-radius: var(--radius); padding: 8px 12px;
+  font-size: 13px; color: var(--text-primary);
+  font-family: inherit; outline: none;
+}
+.url-input:focus { border-color: var(--accent); }
+.url-input::placeholder { color: var(--text-muted); }
+.add-btn {
+  font-size: 13px; font-weight: 500; padding: 8px 16px;
+  background: var(--accent); color: var(--navy-900);
+  border: none; border-radius: var(--radius); cursor: pointer;
+  transition: opacity 0.15s; white-space: nowrap;
+}
+.add-btn:hover { opacity: 0.85; }
+.remove-btn {
+  font-size: 11px; color: var(--text-muted); background: none;
+  border: none; cursor: pointer; padding: 0; margin-top: 4px;
+}
+.remove-btn:hover { color: #f87171; }
+
+/* ── Footer ── */
+footer {
+  padding: 2rem 0; text-align: center;
+  font-size: 12px; color: var(--text-muted);
+  border-top: 0.5px solid var(--border);
+  position: relative; z-index: 1;
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .hero-name { font-size: 32px; }
+  .nav-tabs { gap: 0; }
+  .nav-tab { padding: 0 0.7rem; font-size: 12px; }
+  .exp-item { grid-template-columns: 1fr; }
+  .exp-date { padding-top: 0; }
+  .stats-row { gap: 1.5rem; }
+}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="container">
-    <span class="nav-name">MuhammedSlek</span>
-    <div class="nav-links">
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+    <div class="nav-inner">
+      <span class="nav-name">MS ✦</span>
+      <div class="nav-tabs">
+        <button class="nav-tab active" onclick="switchPage('home', this)">Home</button>
+        <button class="nav-tab" onclick="switchPage('projects', this)">Projects</button>
+        <button class="nav-tab" onclick="switchPage('photos', this)">Photos</button>
+        <button class="nav-tab" onclick="switchPage('videos', this)">Videos</button>
+        <button class="nav-tab" onclick="switchPage('contact', this)">Contact</button>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
+<!-- ══════════ HOME ══════════ -->
+<div class="page active" id="page-home">
   <div class="container">
-    <p class="hero-eyebrow">UAV Systems · Mechatronics · Aviation Ground Ops</p>
-    <h1 class="hero-name">Building things<br>that fly.</h1>
+    <p class="hero-eyebrow">UAV Systems · Mechatronics · Aviation</p>
+    <h1 class="hero-name">Building things<br>that <span>fly.</span></h1>
     <p class="hero-sub">Multilingual technology specialist with 6+ years of hands-on experience in UAV engineering, autonomous systems, hardware and team leadership. Based in Naaldwijk, Netherlands — open to aviation ground crew, drone operations and technical roles.</p>
     <div class="tags">
       <span class="tag">Autonomous UAVs</span>
@@ -274,33 +368,36 @@
     </div>
     <div class="cta-row">
       <a class="btn-primary" href="mailto:muhammedslek@yahoo.com">Get in touch</a>
-      <a class="btn-secondary" href="#projects">See my work</a>
+      <button class="btn-secondary" onclick="switchPage('projects', document.querySelectorAll('.nav-tab')[1])">See my work</button>
+    </div>
+    <div class="stats-row">
+      <div><p class="stat-num">4×</p><p class="stat-label">TEKNOFEST finalist</p></div>
+      <div><p class="stat-num">6+</p><p class="stat-label">Years building UAVs</p></div>
+      <div><p class="stat-num">$3k</p><p class="stat-label">Engineering cost saving</p></div>
+      <div><p class="stat-num">4</p><p class="stat-label">Languages</p></div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- Projects -->
-<section class="section" id="projects">
+<!-- ══════════ PROJECTS ══════════ -->
+<div class="page" id="page-projects">
   <div class="container">
     <p class="section-label">Projects</p>
     <div class="project-grid">
-
       <div class="project-card">
         <div class="project-icon">🛩️</div>
         <p class="project-title">Turan Aviation – Autonomous UAVs</p>
-        <p class="project-org">TEKNOFEST Competition · 2022–2026</p>
-        <p class="project-desc">Founded and led a team for 4 consecutive years. Designed, manufactured and flight-tested autonomous quadcopters and fixed-wing UAVs using 3D-printed and hybrid material structures. Served as primary RC pilot and flight-test coordinator.</p>
+        <p class="project-org">TEKNOFEST · 2022–2026</p>
+        <p class="project-desc">Founded and led a team for 4 consecutive years. Designed, manufactured and flight-tested autonomous quadcopters and fixed-wing UAVs using 3D-printed and hybrid structures.</p>
         <span class="project-badge">4× TEKNOFEST finalist</span>
       </div>
-
       <div class="project-card">
         <div class="project-icon">🤖</div>
         <p class="project-title">FRC Team #10465 – Competition Robot</p>
         <p class="project-org">First Robotics Competition · 2023–2024</p>
-        <p class="project-desc">Designed competitive robots to global FRC specifications. Led mechanical production and reduced manufacturing costs by approximately $3,000 through structural design optimisation and material choices.</p>
+        <p class="project-desc">Designed competitive robots to global FRC specifications. Led mechanical production and reduced manufacturing costs by approximately $3,000 through design optimisation.</p>
         <span class="project-badge">~$3,000 cost saving</span>
       </div>
-
       <div class="project-card">
         <div class="project-icon">💻</div>
         <p class="project-title">School IT Lab Renewal</p>
@@ -308,116 +405,76 @@
         <p class="project-desc">Planned and executed a full IT lab renewal — hardware selection, setup and configuration of a cross-platform working environment for students and staff.</p>
         <span class="project-badge">Infrastructure project</span>
       </div>
-
       <div class="project-card">
         <div class="project-icon">🌐</div>
         <p class="project-title">Application Management Platforms</p>
         <p class="project-org">Home Workshop · 2023–2025</p>
-        <p class="project-desc">Built web platforms for organisations to receive and manage applications, with automated approval and rejection email workflows to reduce admin overhead.</p>
+        <p class="project-desc">Built web platforms for organisations to receive and manage applications, with automated approval and rejection email workflows.</p>
         <span class="project-badge">Web development</span>
       </div>
-
     </div>
-  </div>
-</section>
 
-<!-- Experience -->
-<section class="section" id="experience">
-  <div class="container">
+    <hr class="divider">
     <p class="section-label">Experience</p>
 
     <div class="exp-item">
-      <span class="exp-date">May – Jul 2026</span>
+      <span class="exp-date">May–Jul 2026</span>
       <div>
         <p class="exp-role">Sales Associate & Inventory Controller</p>
         <p class="exp-company">Bakkerij Cappadocia, Rotterdam</p>
         <ul class="exp-bullets">
-          <li>Daily stock monitoring, supply organisation and inventory control</li>
-          <li>Direct customer interaction, developing conversational Dutch</li>
+          <li>Daily stock monitoring and supply organisation</li>
+          <li>Built conversational Dutch through direct customer interaction</li>
         </ul>
       </div>
     </div>
-
     <div class="exp-item">
-      <span class="exp-date">May – Sep 2025</span>
+      <span class="exp-date">May–Sep 2025</span>
       <div>
         <p class="exp-role">Technical Support Technician</p>
         <p class="exp-company">Panorama PC Technical Solutions</p>
         <ul class="exp-bullets">
-          <li>Diagnosed and repaired hardware and software issues for clients</li>
+          <li>Diagnosed and repaired hardware and software issues</li>
           <li>Component replacement, system assembly and custom desktop builds</li>
         </ul>
       </div>
     </div>
-
     <div class="exp-item">
-      <span class="exp-date">Feb – Sep 2024</span>
+      <span class="exp-date">Feb–Sep 2024</span>
       <div>
         <p class="exp-role">Junior Graphic Designer</p>
         <p class="exp-company">TOPS Limited</p>
         <ul class="exp-bullets">
           <li>Designed marketing materials and social media content</li>
-          <li>Tools: Adobe Photoshop, InDesign</li>
+          <li>Adobe Photoshop & InDesign</li>
         </ul>
       </div>
     </div>
-
     <div class="exp-item">
-      <span class="exp-date">2022 – 2026</span>
+      <span class="exp-date">2022–2026</span>
       <div>
         <p class="exp-role">Founder & Team Leader</p>
         <p class="exp-company">Turan Aviation & IT Development</p>
         <ul class="exp-bullets">
           <li>Founded and led team across all 4 TEKNOFEST seasons</li>
-          <li>Primary RC pilot and flight-test coordinator for all UAV builds</li>
-          <li>Led school IT lab renewal project from planning to deployment</li>
+          <li>Primary RC pilot and flight-test coordinator</li>
+          <li>Led school IT lab renewal from planning to deployment</li>
         </ul>
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- Skills & Languages -->
-<section class="section" id="skills">
-  <div class="container">
+    <hr class="divider">
     <p class="section-label">Skills</p>
     <div class="skills-grid">
-      <div class="skill-card">
-        <p class="skill-name">UAV Engineering</p>
-        <p class="skill-sub">Quadcopter · Fixed-wing · Flight test</p>
-      </div>
-      <div class="skill-card">
-        <p class="skill-name">3D CAD</p>
-        <p class="skill-sub">Fusion 360 · Technical drawing</p>
-      </div>
-      <div class="skill-card">
-        <p class="skill-name">Hardware Repair</p>
-        <p class="skill-sub">PC assembly · Diagnostics</p>
-      </div>
-      <div class="skill-card">
-        <p class="skill-name">RC Pilot</p>
-        <p class="skill-sub">Flight ops · Ground coordination</p>
-      </div>
-      <div class="skill-card">
-        <p class="skill-name">Aviation Ground Ops</p>
-        <p class="skill-sub">Launch assist · Safety awareness</p>
-      </div>
-      <div class="skill-card">
-        <p class="skill-name">Web Development</p>
-        <p class="skill-sub">Platforms · Email automation</p>
-      </div>
-      <div class="skill-card">
-        <p class="skill-name">Graphic Design</p>
-        <p class="skill-sub">Photoshop · InDesign</p>
-      </div>
-      <div class="skill-card">
-        <p class="skill-name">Team Leadership</p>
-        <p class="skill-sub">4-year project management</p>
-      </div>
+      <div class="skill-card"><p class="skill-name">UAV Engineering</p><p class="skill-sub">Quadcopter · Fixed-wing · Flight test</p></div>
+      <div class="skill-card"><p class="skill-name">3D CAD</p><p class="skill-sub">Fusion 360 · Technical drawing</p></div>
+      <div class="skill-card"><p class="skill-name">Hardware Repair</p><p class="skill-sub">PC assembly · Diagnostics</p></div>
+      <div class="skill-card"><p class="skill-name">RC Pilot</p><p class="skill-sub">Flight ops · Ground coordination</p></div>
+      <div class="skill-card"><p class="skill-name">Aviation Ground Ops</p><p class="skill-sub">Launch assist · Safety awareness</p></div>
+      <div class="skill-card"><p class="skill-name">Web Development</p><p class="skill-sub">Platforms · Email automation</p></div>
+      <div class="skill-card"><p class="skill-name">Graphic Design</p><p class="skill-sub">Photoshop · InDesign</p></div>
+      <div class="skill-card"><p class="skill-name">Team Leadership</p><p class="skill-sub">4-year project management</p></div>
     </div>
-
-    <p class="section-label" style="margin-top: 2rem;">Languages</p>
     <div class="lang-row">
       <span class="lang-pill">Turkish <span class="lang-level">Native</span></span>
       <span class="lang-pill">Arabic <span class="lang-level">Native</span></span>
@@ -425,10 +482,43 @@
       <span class="lang-pill">Dutch <span class="lang-level">Conversational</span></span>
     </div>
   </div>
-</section>
+</div>
 
-<!-- Contact -->
-<section class="section" id="contact">
+<!-- ══════════ PHOTOS ══════════ -->
+<div class="page" id="page-photos">
+  <div class="container">
+    <p class="section-label">Photos</p>
+    <p class="media-intro">Click any slot to upload a photo from your device. Great to add: UAV builds, Fusion 360 renders, TEKNOFEST competition shots, FRC robot photos.</p>
+    <div class="photo-grid" id="photo-grid"></div>
+  </div>
+</div>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="Full size photo">
+</div>
+
+<!-- ══════════ VIDEOS ══════════ -->
+<div class="page" id="page-videos">
+  <div class="container">
+    <p class="section-label">Videos</p>
+    <p class="media-intro">Paste a YouTube link and click Add to embed a video. Works with any YouTube URL.</p>
+    <div class="url-input-row">
+      <input class="url-input" id="yt-input" type="text" placeholder="https://www.youtube.com/watch?v=...">
+      <input class="url-input" id="yt-title" type="text" placeholder="Video title (optional)" style="max-width:200px;">
+      <button class="add-btn" onclick="addVideo()">Add video</button>
+    </div>
+    <div class="video-grid" id="video-grid">
+      <div style="grid-column:1/-1; padding: 3rem 0; text-align:center; color: var(--text-muted); font-size:14px;">
+        No videos yet — paste a YouTube link above to get started.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CONTACT ══════════ -->
+<div class="page" id="page-contact">
   <div class="container">
     <p class="section-label">Contact</p>
     <div class="contact-grid">
@@ -446,13 +536,124 @@
       </span>
     </div>
   </div>
-</section>
+</div>
 
 <footer>
-  <div class="container">
-    © 2026 MuhammedSlek
-  </div>
+  <div class="container">© 2026 Mohamad Slek · Naaldwijk, Netherlands</div>
 </footer>
 
+<script>
+/* ── Page switching ── */
+function switchPage(id, tab) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  if (tab) tab.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+/* ── Photos ── */
+const PHOTO_LABELS = [
+  'TEKNOFEST UAV build', 'Fixed-wing aircraft', 'Quadcopter assembly',
+  'FRC robot', 'Fusion 360 render', 'Flight testing',
+  'Ground crew / airfield', 'Team photo'
+];
+
+function buildPhotoGrid() {
+  const grid = document.getElementById('photo-grid');
+  grid.innerHTML = '';
+  PHOTO_LABELS.forEach((label, i) => {
+    const slot = document.createElement('div');
+    slot.className = 'photo-slot';
+    slot.innerHTML = `
+      <span class="slot-icon">📷</span>
+      <span class="slot-label">${label}</span>
+      <input type="file" accept="image/*" onchange="loadPhoto(this, ${i})">
+    `;
+    slot.addEventListener('click', function(e) {
+      if (e.target.tagName !== 'INPUT') this.querySelector('input').click();
+    });
+    grid.appendChild(slot);
+  });
+}
+
+function loadPhoto(input, idx) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const slot = document.querySelectorAll('.photo-slot')[idx];
+    slot.innerHTML = `
+      <img src="${e.target.result}" alt="Photo ${idx+1}" onclick="openLightbox('${e.target.result}')">
+      <div class="photo-caption">${PHOTO_LABELS[idx]}</div>
+    `;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+buildPhotoGrid();
+
+/* ── Videos ── */
+let videos = [];
+
+function getYouTubeId(url) {
+  const patterns = [
+    /youtube\.com\/watch\?v=([^&]+)/,
+    /youtu\.be\/([^?]+)/,
+    /youtube\.com\/embed\/([^?]+)/,
+    /youtube\.com\/shorts\/([^?]+)/
+  ];
+  for (const p of patterns) {
+    const m = url.match(p);
+    if (m) return m[1];
+  }
+  return null;
+}
+
+function addVideo() {
+  const url = document.getElementById('yt-input').value.trim();
+  const title = document.getElementById('yt-title').value.trim() || 'UAV / Project video';
+  const id = getYouTubeId(url);
+  if (!id) { alert('Please paste a valid YouTube link.'); return; }
+  videos.push({ id, title });
+  document.getElementById('yt-input').value = '';
+  document.getElementById('yt-title').value = '';
+  renderVideos();
+}
+
+function removeVideo(idx) {
+  videos.splice(idx, 1);
+  renderVideos();
+}
+
+function renderVideos() {
+  const grid = document.getElementById('video-grid');
+  if (videos.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1; padding:3rem 0; text-align:center; color:var(--text-muted); font-size:14px;">No videos yet — paste a YouTube link above to get started.</div>';
+    return;
+  }
+  grid.innerHTML = videos.map((v, i) => `
+    <div class="video-slot">
+      <iframe class="video-embed"
+        src="https://www.youtube.com/embed/${v.id}"
+        title="${v.title}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      <div class="video-info">
+        <p class="video-title">${v.title}</p>
+        <button class="remove-btn" onclick="removeVideo(${i})">Remove</button>
+      </div>
+    </div>
+  `).join('');
+}
+</script>
 </body>
 </html>
