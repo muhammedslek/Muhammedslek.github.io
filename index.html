@@ -488,7 +488,7 @@ footer {
 <div class="page" id="page-photos">
   <div class="container">
     <p class="section-label">Photos</p>
-    <p class="media-intro">Click any slot to upload a photo from your device. Great to add: UAV builds, Fusion 360 renders, TEKNOFEST competition shots, FRC robot photos.</p>
+    <p class="media-intro">Click any empty slot to preview a photo. To make it permanent for visitors, add the image file to the "images" folder in the GitHub repo and update the PHOTOS list in the code.</p>
     <div class="photo-grid" id="photo-grid"></div>
   </div>
 </div>
@@ -503,7 +503,7 @@ footer {
 <div class="page" id="page-videos">
   <div class="container">
     <p class="section-label">Videos</p>
-    <p class="media-intro">Paste a YouTube link and click Add to embed a video. Works with any YouTube URL.</p>
+    <p class="media-intro">Paste a YouTube link to preview it here. To make it permanent for visitors, add the video ID to the "videos" list in the code and push to GitHub.</p>
     <div class="url-input-row">
       <input class="url-input" id="yt-input" type="text" placeholder="https://www.youtube.com/watch?v=...">
       <input class="url-input" id="yt-title" type="text" placeholder="Video title (optional)" style="max-width:200px;">
@@ -552,27 +552,45 @@ function switchPage(id, tab) {
   window.scrollTo(0, 0);
 }
 
-/* ── Photos ── */
-const PHOTO_LABELS = [
-  'TEKNOFEST UAV build', 'Fixed-wing aircraft', 'Quadcopter assembly',
-  'FRC robot', 'Fusion 360 render', 'Flight testing',
-  'Ground crew / airfield', 'Team photo'
+/* ── Photos ──
+   To make a photo permanent for every visitor:
+   1. Add the image file into an "images" folder next to this index.html in your GitHub repo
+      (e.g. images/teknofest-build.jpg)
+   2. Set its "src" below to that path (e.g. "images/teknofest-build.jpg")
+   3. Commit + push to GitHub — it will then show for everyone automatically.
+   Leave src as "" to keep an empty uploadable slot (visible only to you, for local preview). */
+const PHOTOS = [
+  { src: 'images/teknofest.jpeg', label: 'TEKNOFEST UAV build' },
+  { src: '', label: 'Fixed-wing aircraft' },
+  { src: '', label: 'Quadcopter assembly' },
+  { src: '', label: 'FRC robot' },
+  { src: '', label: 'Fusion 360 render' },
+  { src: '', label: 'Flight testing' },
+  { src: '', label: 'Ground crew / airfield' },
+  { src: '', label: 'Team photo' }
 ];
 
 function buildPhotoGrid() {
   const grid = document.getElementById('photo-grid');
   grid.innerHTML = '';
-  PHOTO_LABELS.forEach((label, i) => {
+  PHOTOS.forEach((photo, i) => {
     const slot = document.createElement('div');
     slot.className = 'photo-slot';
-    slot.innerHTML = `
-      <span class="slot-icon">📷</span>
-      <span class="slot-label">${label}</span>
-      <input type="file" accept="image/*" onchange="loadPhoto(this, ${i})">
-    `;
-    slot.addEventListener('click', function(e) {
-      if (e.target.tagName !== 'INPUT') this.querySelector('input').click();
-    });
+    if (photo.src) {
+      slot.innerHTML = `
+        <img src="${photo.src}" alt="${photo.label}" onclick="openLightbox('${photo.src}')">
+        <div class="photo-caption">${photo.label}</div>
+      `;
+    } else {
+      slot.innerHTML = `
+        <span class="slot-icon">📷</span>
+        <span class="slot-label">${photo.label}</span>
+        <input type="file" accept="image/*" onchange="loadPhoto(this, ${i})">
+      `;
+      slot.addEventListener('click', function(e) {
+        if (e.target.tagName !== 'INPUT') this.querySelector('input').click();
+      });
+    }
     grid.appendChild(slot);
   });
 }
@@ -584,7 +602,7 @@ function loadPhoto(input, idx) {
     const slot = document.querySelectorAll('.photo-slot')[idx];
     slot.innerHTML = `
       <img src="${e.target.result}" alt="Photo ${idx+1}" onclick="openLightbox('${e.target.result}')">
-      <div class="photo-caption">${PHOTO_LABELS[idx]}</div>
+      <div class="photo-caption">${PHOTOS[idx].label} (preview only — not saved yet)</div>
     `;
   };
   reader.readAsDataURL(input.files[0]);
@@ -600,8 +618,14 @@ function closeLightbox() {
 
 buildPhotoGrid();
 
-/* ── Videos ── */
-let videos = [];
+/* ── Videos ──
+   To make a video permanent for every visitor, add an entry here with a real
+   YouTube video ID (the part after "v=" or "youtu.be/" in the URL), then
+   commit + push to GitHub. Videos added via the input box below are local
+   preview only and disappear on refresh. */
+let videos = [
+  // { id: 'dQw4w9WgXcQ', title: 'TEKNOFEST 2025 flight test' },
+];
 
 function getYouTubeId(url) {
   const patterns = [
